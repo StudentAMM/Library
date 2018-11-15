@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <p></p>
+    <p>Вы искали: <strong>{{ query }}</strong></p>
+
+    {% if books %}
+        <p>Найдено {{ books|length }} книг{{ books|pluralize }}.</p>
+        <ul>
+            {% for book in books %}
+             <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Не найдено книг</p>
+    {% endif %}
+{% endblock %}

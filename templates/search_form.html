@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <p> </p>
+    <form action={% url 'search_result' %} method="get">
+        <input type="text" name="q">
+        <input type="submit" class="btn-primary" value="Поиск">
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Список авторов</h1>
+
+    {% if author_list %}
+    <ul>
+
+      {% for author in  author_list %}
+      <li>
+          {{ author.first_name }} {{ author.last_name }} <a href="{{ author.get_absolute_url }}">({{author.idd}})</a>
+          <a href="{{ author.get_absolute_url }}/update"><u>Изменить</u></a>
+          <a href="{{ author.get_absolute_url }}/delete"><u>Удалить</u></a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Авторов нет в библиотеке</p>
+    {% endif %}
+    <a href={% url 'author_create' %}><button class="btn btn">Добавить автора</button></a>
+{% endblock %}

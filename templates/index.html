@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Library</h1>
+
+  <p>Добро пожаловать на сайт <em>Library</em></p>
+
+<h2>О книжном фонде</h2>
+
+  <p>Показатели библиотеки:</p>
+  <ul>
+    <li><strong>Книги:</strong> {{ num_books }}</li>
+    <li><strong>Авторы:</strong> {{ num_authors }}</li>
+  </ul>
+
+{% endblock %}

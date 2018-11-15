@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Title: {{ book.title }}</h1>
+    <p><strong>Имя:</strong> {{ author.first_name}}</p>
+    <p><strong>Фамилия:</strong> {{ author.last_name }}</p>
+    <p><strong>ID:</strong> <a href="{{ author.get_absolute_url }}">{{ author.idd }}</a></p>
+    <p><a href="{{ author.get_absolute_url }}/update"><button>Изменить</button></a></p>
+    <p><a href="{{ author.get_absolute_url }}/delete"><button>Удалить</button></a></p>
+
+{% endblock %}

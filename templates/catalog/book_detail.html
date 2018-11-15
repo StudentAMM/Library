@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Title: {{ book.title }}</h1>
+
+    <p><strong>Автор:</strong> <a href="{{ author.get_absolute_url }}">{{ book.author }}</a></p>
+    <p><strong>Название:</strong> {{ book.title }}</p>
+    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+    <p><a href="{{ book.get_absolute_url }}/update"><button>Изменить</button></a></p>
+    <p><a href="{{ book.get_absolute_url }}/delete"><button>Удалить</button></a></p>
+{% endblock %}

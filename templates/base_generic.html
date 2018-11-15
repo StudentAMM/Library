@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block title %}<title>Library</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/catalog/static/css/style.css">
+
+</head>
+
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'index' %}">Library</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'books' %}">Книги</a></li>
+                    <li><a href="{% url 'authors' %}">Авторы</a></li>
+                    <li><a href="{% url 'search_book' %}">Поиск</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-sm-2">
+            {% block sidebar %}
+                <p></p>
+                <ul class="sidebar-nav">
+                    <li><a href="{% url 'index' %}">Главная страница</a></li>
+                    <li><a href="{% url 'books' %}">Все книги</a></li>
+                    <li><a href="{% url 'authors' %}">Все авторы</a></li>
+                    <li><a href="{% url 'search_book' %}">Поиск</a></li>
+                    {% if user.is_authenticated %}
+                        <li>User: {{ user.get_username }}</li>
+                        <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+                    {% endif %}
+                </ul>
+                <p>Вы посетили эту страницу {{ num_visits }}{% if num_visits == 1 %} time{% else %} раз{% endif %}.</p>
+            {% endblock %}
+        </div>
+        <div class="col-sm-10 ">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
